@@ -5,7 +5,7 @@
     "newVMName": {
       "value": "MyVM1pwdgal"
     },
-    "existingLabName": {
+    "labName": {
       "value": "MyLab1"
     },
     "newVMSize": {
