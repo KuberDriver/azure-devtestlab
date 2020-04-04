@@ -8,7 +8,7 @@
         "description": "The name of the new vm to be created."
       }
     },
-    "existingLabName": {
+    "labName": {
       "type": "string",
       "metadata": {
         "description": "The name of an existing lab where the new vm will be created."
@@ -66,9 +66,9 @@
   },
   "variables": {
     "labSubnetName": "[concat(variables('labVirtualNetworkName'), 'Subnet')]",
-    "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('existingLabName'), variables('labVirtualNetworkName'))]",
-    "labVirtualNetworkName": "[concat('Dtl', parameters('existingLabName'))]",
-    "resourceName": "[concat(parameters('existingLabName'), '/', parameters('newVMName'))]",
+    "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('labName'), variables('labVirtualNetworkName'))]",
+    "labVirtualNetworkName": "[concat('Dtl', parameters('labName'))]",
+    "resourceName": "[concat(parameters('labName'), '/', parameters('newVMName'))]",
     "resourceType": "Microsoft.DevTestLab/labs/virtualMachines"
   },
   "resources": [
@@ -98,7 +98,7 @@
   "outputs": {
     "vmId": {
       "type": "string",
-      "value": "[resourceId(variables('resourceType'), parameters('existingLabName'), parameters('newVMName'))]"
+      "value": "[resourceId(variables('resourceType'), parameters('labName'), parameters('newVMName'))]"
     }
   }
 }
